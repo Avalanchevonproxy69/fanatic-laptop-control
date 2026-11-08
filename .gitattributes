@@ -1,0 +1,6 @@
+* text=auto
+*.rs text eol=lf
+*.png binary
+*.gif binary
+docs/** linguist-documentation
+*.html linguist-documentation

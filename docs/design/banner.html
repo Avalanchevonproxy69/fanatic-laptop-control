@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fanatic - README banner</title>
+<style>
+:root{--stage:#111215;--chrome:#1e1f22;--bg:#26272b;--surface:#2e3035;--sel:#404249;--border:#3a3d43;--div:#34363b;--text:#e3e5e8;--text2:#a4a7ae;--text3:#7d8088;--accent:#f08c35;
+  --display:'SF Pro Display','SF Pro',-apple-system,'Segoe UI Variable Display',system-ui,sans-serif;
+  --textf:'SF Pro Text','SF Pro',-apple-system,'Segoe UI Variable Text',system-ui,sans-serif;
+  --mono:'SF Mono',ui-monospace,'Cascadia Mono',Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1280px;height:440px;overflow:hidden;background:var(--stage);color:var(--text);font-family:var(--textf);-webkit-font-smoothing:antialiased}
+#bg{position:absolute;inset:0}
+.word{position:absolute;left:62px;top:64px;display:flex;align-items:center;gap:18px;font-family:'SF Pro',var(--display);font-stretch:120%;font-weight:700;font-size:76px;letter-spacing:-.01em;line-height:1}
+.prop{position:absolute;left:64px;top:170px;width:520px;font-size:24px;line-height:1.32;font-weight:600;font-family:var(--display)}
+.prop2{position:absolute;left:64px;top:244px;width:500px;font-size:15px;line-height:1.55;color:var(--text2)}
+.brands{position:absolute;left:64px;top:344px;width:520px;display:flex;flex-wrap:wrap;gap:6px}
+.brands span{font-size:12px;padding:4px 9px;border-radius:5px;background:var(--surface);border:1px solid var(--border);color:var(--text2)}
+.win{position:absolute;left:640px;top:40px;width:700px;height:440px;border-radius:8px 0 0 0;background:var(--bg);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 70px rgba(0,0,0,.6)}
+.tb{height:32px;background:var(--chrome);display:flex;align-items:center;gap:8px;padding-left:12px;font-size:12px;color:var(--text2)}
+.ph{position:absolute;left:20px;top:44px;right:0;display:flex;align-items:center}
+.ph h1{font-family:var(--display);font-size:20px;font-weight:600;margin-right:auto}
+.seg{display:inline-flex;background:var(--chrome);border:1px solid var(--border);border-radius:6px;padding:2px;gap:2px;margin-right:20px}
+.seg div{height:26px;padding:0 12px;display:flex;align-items:center;border-radius:4px;color:var(--text2);font-size:12.5px}
+.seg div.on{background:var(--sel);color:var(--text)}
+.panel{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.hd{height:36px;display:flex;align-items:center;padding:0 14px;font-weight:600;font-size:13px;border-bottom:1px solid var(--div)}
+.hd .x{margin-left:auto;font-weight:400;color:var(--text3);font-size:12px;display:flex;align-items:center;gap:8px;font-family:var(--mono)}
+.row{display:flex;align-items:center;gap:12px;padding:0 14px;min-height:44px;font-size:13px}
+.row+.row{border-top:1px solid var(--div)}
+.bar{height:6px;border-radius:3px;background:var(--chrome);flex:none;overflow:hidden}.bar div{height:100%;background:var(--accent);border-radius:3px}
+.rpm{margin-left:auto;font-family:var(--display);font-size:20px;font-weight:500}.rpm span{font-size:12px;color:var(--text3);font-family:var(--textf)}
+</style>
+</head>
+<body>
+<svg id="bg" width="1280" height="440"></svg>
+<div class="word"><svg width="58" height="58" viewBox="0 0 20 20" fill="none" stroke="#f08c35" stroke-width="1.4" stroke-linecap="round"><circle cx="10" cy="10" r="1.6"/><path d="M10 8.4c-.4-2.7.7-5 2.6-5 1.9 0 2.2 2.7-1 4.6"/><path d="M11.5 10.6c2.4 1.2 3.8 3.3 2.8 4.9-.9 1.6-3.4.6-3.6-3"/><path d="M8.5 10.8c-2.2 1.5-4.7 1.7-5.6 0-.9-1.6 1.2-3.2 4.3-1.7"/><circle cx="10" cy="10" r="7.5"/></svg>Fanatic</div>
+<div class="prop">Fan curves, power modes and a battery charge limit for every gaming laptop.</div>
+<div class="prop2">One 5 MB portable app for Windows instead of Armoury Crate, Legion Vantage, OMEN Gaming Hub, MSI Center and Alienware Command Center.</div>
+<div class="brands"><span>ASUS ROG / TUF</span><span>Lenovo Legion</span><span>HP Omen</span><span>MSI</span><span>Dell / Alienware</span><span>Acer Predator</span><span>Gigabyte AORUS</span><span>Framework</span></div>
+<div class="win">
+  <div class="tb"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#f08c35" stroke-width="1.5"><circle cx="10" cy="10" r="7.5"/><circle cx="10" cy="10" r="1.6"/></svg>Fanatic</div>
+  <div class="ph"><h1>Overview</h1><div class="seg"><div>Silent</div><div>Balanced</div><div class="on">Performance</div><div>Turbo</div></div></div>
+  <div class="panel" style="left:20px;top:92px;width:600px;height:228px">
+    <div class="hd">Chassis temperature<div class="x">25&deg;<span style="display:block;width:100px;height:6px;border-radius:3px;background:linear-gradient(90deg,#050314,#2a0b5e,#6a0f8e,#b5207f,#e8483f,#f98a16,#fcc93a,#fff6d0)"></span>100&deg;C</div></div>
+    <canvas id="map" style="position:absolute;left:0;top:36px;width:598px;height:190px"></canvas>
+  </div>
+  <div class="panel" style="left:20px;top:332px;width:600px;height:126px">
+    <div class="hd">Fans<div class="x" style="font-family:var(--textf)">Curve: Performance</div></div>
+    <div class="row">CPU fan<div class="bar" style="width:260px;margin-left:24px"><div style="width:92%"></div></div><div class="rpm">5&#8201;330 <span>rpm</span></div></div>
+    <div class="row">GPU fan<div class="bar" style="width:260px;margin-left:22px"><div style="width:70%"></div></div><div class="rpm">4&#8201;070 <span>rpm</span></div></div>
+  </div>
+</div>
+<script>
+(function(){
+const STOPS=['#050314','#2a0b5e','#6a0f8e','#b5207f','#e8483f','#f98a16','#fcc93a','#fff6d0'].map(h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16)));
+function rgb(t){t=Math.max(0,Math.min(1,t));const x=t*7,i=Math.min(6,Math.floor(x)),f=x-i,a=STOPS[i],b=STOPS[i+1];return [0,1,2].map(k=>a[k]+(b[k]-a[k])*f);}
+const TAU=Math.PI*2;
+(function(){let h='';const ring=(cx,cy,R,ph)=>{let d='';for(let k=0;k<=120;k++){const a=k/120*TAU,r=R+R*.07*Math.sin(3*a+ph)+R*.04*Math.sin(5*a-ph*1.7);d+=(k?'L':'M')+(cx+Math.cos(a)*r).toFixed(1)+' '+(cy+Math.sin(a)*r*.8).toFixed(1);}return `<path d="${d}Z" fill="none" stroke="rgba(255,255,255,.04)"/>`;};
+  for(let i=1;i<=10;i++)h+=ring(120,440,i*60,i*.5);document.getElementById('bg').innerHTML=h;})();
+function render(t){
+  const W=598,H=190,cv=document.getElementById('map'),dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  // the top half of the chassis: fans, heat pipes, CPU and GPU dies
+  const BX=54,BY=34,BW=490,BH=300,base=36,amb=23.5,s={cpu:89.1,gpu:79.2,vrm:68.7,ssd:47,mem:52.7,cell:32.3};
+  const src=[[.40,.31,.075,s.cpu],[.62,.32,.09,s.gpu],[.51,.16,.045,s.vrm],[.70,.62,.07,s.mem-6]];
+  for(const [u0,v0,u1,v1,T] of [[.40,.31,.13,.16,s.cpu],[.62,.32,.87,.16,s.gpu],[.40,.31,.82,.18,s.cpu]])for(let k=1;k<=7;k++){const f=k/8;src.push([u0+(u1-u0)*f,v0+(v1-v0)*f,.028,base+(T-base)*(.82-.42*f)]);}
+  const GW=150,GH=48,off=document.createElement('canvas');off.width=GW;off.height=GH;const o=off.getContext('2d'),img=o.createImageData(GW,GH);let p=0;
+  for(let j=0;j<GH;j++)for(let i=0;i<GW;i++){const x=i/GW*W,y=j/GH*H,u=(x-BX)/BW,v=(y-BY)/BH;let T;
+    if(u>=0&&u<=1&&v>=0&&v<=1){T=base+Math.sin(u*7+v*5);for(const [su,sv,sg,st] of src){const du=(u-su)*1.66,dv=v-sv,c=base+(st-base)*Math.exp(-(du*du+dv*dv)/(2*sg*sg));if(c>T)T=c;}}
+    else{T=amb+(u>-.03&&u<1.03&&v>-.05?3:0);for(const [fu,dir] of [[.13,-1],[.87,1]]){const du=(u-fu-dir*.02)*2.2,dv=v+.02;if(dv<.02){const g=Math.exp(-du*du/(2*.06*.06)-dv*dv/(2*.11*.11));T=Math.max(T,amb+(s.cpu-amb)*.5*g);}}}
+    const c=rgb((T-25)/75);img.data[p++]=c[0];img.data[p++]=c[1];img.data[p++]=c[2];img.data[p++]=255;}
+  o.putImageData(img,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(off,0,0,W,H);
+  const rr=(x,y,w,h,r)=>{ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();};
+  ctx.strokeStyle='rgba(255,255,255,.32)';ctx.lineWidth=1.2;rr(BX,BY,BW,BH,14);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,.11)';ctx.lineWidth=1;const kx=BX+BW*.09,ky=BY+BH*.42,kw=BW*.82/15,kh=BH*.34/6;
+  for(let r=0;r<6;r++)for(let c=0;c<15;c++){rr(kx+c*kw+2,ky+r*kh+2,kw-4,kh-4,2);ctx.stroke();}
+  for(const [fu,dirn] of [[.13,1],[.87,-1]]){const cx=BX+BW*fu,cy=BY+BH*.16+6,R=40;ctx.strokeStyle='rgba(255,255,255,.38)';ctx.lineWidth=1.1;ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,.26)';for(let b=0;b<9;b++){const a=dirn*t*2+b*TAU/9;ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*R*.24,cy+Math.sin(a)*R*.24);ctx.quadraticCurveTo(cx+Math.cos(a+.55)*R*.62,cy+Math.sin(a+.55)*R*.62,cx+Math.cos(a+.25)*R*.94,cy+Math.sin(a+.25)*R*.94);ctx.stroke();}
+    ctx.fillStyle='rgba(20,20,24,.9)';ctx.beginPath();ctx.arc(cx,cy,R*.22,0,TAU);ctx.fill();}
+  ctx.font='11px "SF Mono", ui-monospace, Consolas, monospace';ctx.textBaseline='middle';
+  const spot=(u,v,label,T,side,dyl)=>{const x=BX+BW*u,y=BY+BH*v;ctx.strokeStyle='#fff';ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(x-8,y);ctx.lineTo(x-3,y);ctx.moveTo(x+3,y);ctx.lineTo(x+8,y);ctx.moveTo(x,y-8);ctx.lineTo(x,y-3);ctx.moveTo(x,y+3);ctx.lineTo(x,y+8);ctx.stroke();
+    const txt=`${label} ${T.toFixed(1)}°`,w=ctx.measureText(txt).width,bx=side>0?x+10:x-20-w,by=y+dyl;ctx.fillStyle='rgba(0,0,0,.62)';rr(bx,by,w+10,18,3);ctx.fill();ctx.fillStyle='#fff';ctx.fillText(txt,bx+5,by+9);};
+  spot(.40,.31,'CPU',s.cpu,-1,10);spot(.62,.32,'GPU',s.gpu,1,10);
+}
+window.setScene=function(){};
+window.renderAt=function(t){render(t);};
+window.CAPTURE={width:1280,height:440,scale:1.5,shots:[{name:'banner',scene:'banner',t:0.6}],gifs:[]};
+if(!window.__CAPTURE){const loop=()=>{render(performance.now()/1000);requestAnimationFrame(loop);};requestAnimationFrame(loop);}else render(0.6);
+})();
+</script>
+</body>
+</html>

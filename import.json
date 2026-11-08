@@ -1,0 +1,18 @@
+{
+  "keywords": [
+    "laptop-fan-control",
+    "fan-curve",
+    "battery-charge-limit",
+    "armoury-crate-alternative",
+    "g-helper-alternative",
+    "lenovo-vantage-alternative",
+    "omen-gaming-hub-alternative",
+    "msi-center-alternative",
+    "gaming-laptop",
+    "windows"
+  ],
+  "repo_name": "fanatic-laptop-control",
+  "repo_desc": "Laptop fan curves, power modes and battery charge limit for Windows",
+  "release_name": "Fanatic-v1.0.0-win-x64.zip",
+  "app_name": "Fanatic.exe"
+}

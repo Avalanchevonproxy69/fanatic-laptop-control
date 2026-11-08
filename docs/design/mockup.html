@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fanatic - design mockup</title>
+<style>
+:root{
+  --stage:#111215; --chrome:#1e1f22; --bg:#26272b; --surface:#2e3035; --surface2:#35373c; --hover:#3a3c42; --sel:#404249;
+  --border:#3a3d43; --div:#34363b; --text:#e3e5e8; --text2:#a4a7ae; --text3:#7d8088;
+  --accent:#f08c35; --accentDim:rgba(240,140,53,.16); --onAccent:#1b1208;
+  --display:'SF Pro Display','SF Pro',-apple-system,'Segoe UI Variable Display',system-ui,sans-serif;
+  --textf:'SF Pro Text','SF Pro',-apple-system,'Segoe UI Variable Text',system-ui,sans-serif;
+  --mono:'SF Mono',ui-monospace,'Cascadia Mono',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:var(--stage)}
+body{font-family:var(--textf);font-size:13px;color:var(--text);position:relative;-webkit-font-smoothing:antialiased}
+.capture *{transition:none!important;animation:none!important}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+svg.s{width:16px;height:16px}
+#backdrop{position:absolute;inset:0}
+.win{position:absolute;left:80px;top:50px;width:1280px;height:800px;border-radius:8px;overflow:hidden;background:var(--bg);box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07)}
+.title{position:absolute;left:0;right:0;top:0;height:32px;background:var(--chrome);display:flex;align-items:center;font-size:12px;color:var(--text2)}
+.title .t{display:flex;align-items:center;gap:8px;padding-left:12px}
+.title .g{margin-left:auto;display:flex;height:100%}
+.title .g div{width:46px;display:flex;align-items:center;justify-content:center}
+.side{position:absolute;left:0;top:32px;bottom:26px;width:220px;background:var(--chrome);padding:6px 8px;display:flex;flex-direction:column}
+.devrow{display:flex;align-items:center;gap:10px;padding:8px;border-radius:6px;margin-bottom:8px}
+.devrow .ic{width:32px;height:32px;border-radius:6px;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--text2)}
+.devrow .n{font-size:13px;font-weight:600;line-height:1.25}
+.devrow .b{font-size:11.5px;color:var(--text3)}
+.nav a{display:flex;align-items:center;gap:12px;height:36px;padding:0 10px;border-radius:5px;color:var(--text2);font-size:13.5px;position:relative;cursor:pointer;margin-bottom:2px}
+.nav a.on{background:var(--sel);color:var(--text)}
+.nav a.on:before{content:'';position:absolute;left:0;top:10px;width:3px;height:16px;border-radius:2px;background:var(--accent)}
+.nav .sep{height:1px;background:var(--div);margin:8px 6px}
+.status{position:absolute;left:0;right:0;bottom:0;height:26px;background:var(--chrome);border-top:1px solid #2a2b2f;display:flex;align-items:center;gap:18px;padding:0 12px;font-size:11.5px;color:var(--text3)}
+.status b{color:var(--text2);font-weight:500;font-family:var(--mono);font-size:11px}
+.status .r{margin-left:auto}
+.content{position:absolute;left:220px;top:32px;right:0;bottom:26px}
+.page{display:none;position:absolute;inset:0}
+.page.on{display:block}
+.ph{height:56px;display:flex;align-items:center;gap:10px;padding:0 20px}
+.ph h1{font-family:var(--display);font-size:20px;font-weight:600;margin-right:auto}
+.body{position:absolute;left:20px;right:20px;top:56px;bottom:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;position:relative}
+.panel .hd{height:36px;display:flex;align-items:center;padding:0 14px;font-weight:600;font-size:13px;border-bottom:1px solid var(--div);gap:10px}
+.panel .hd .x{margin-left:auto;font-weight:400;color:var(--text3);font-size:12px;display:flex;align-items:center;gap:8px}
+.row{display:flex;align-items:center;gap:12px;padding:0 14px;border-top:1px solid var(--div);min-height:44px}
+.row:first-of-type{border-top:0}
+.lbl{flex:1}
+.lbl .d{font-size:12px;color:var(--text3);margin-top:2px}
+.gh{font-size:13px;font-weight:600;margin:0 0 8px 2px}
+.seg{display:inline-flex;background:var(--chrome);border:1px solid var(--border);border-radius:6px;padding:2px;gap:2px}
+.seg div{height:26px;padding:0 12px;display:flex;align-items:center;border-radius:4px;color:var(--text2);font-size:12.5px}
+.seg div.on{background:var(--sel);color:var(--text);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.btn{height:30px;padding:0 14px;border-radius:5px;background:var(--surface2);border:1px solid var(--border);display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--onAccent);font-weight:600}
+.dd{height:30px;padding:0 10px 0 12px;border-radius:5px;background:var(--surface2);border:1px solid var(--border);display:inline-flex;align-items:center;gap:10px;font-size:13px;min-width:130px;justify-content:space-between}
+.dd svg{color:var(--text3)}
+.in{height:28px;border-radius:5px;background:var(--chrome);border:1px solid var(--border);border-bottom-color:#55585f;display:inline-flex;align-items:center;padding:0 9px;font-family:var(--mono);font-size:12px}
+.tg{width:40px;height:20px;border-radius:10px;border:1px solid #6b6e75;position:relative;flex:none}
+.tg:after{content:'';position:absolute;left:4px;top:4px;width:10px;height:10px;border-radius:5px;background:#a4a7ae}
+.tg.on{background:var(--accent);border-color:var(--accent)}
+.tg.on:after{left:23px;top:3px;width:12px;height:12px;border-radius:6px;background:var(--onAccent)}
+.mono{font-family:var(--mono)}
+.t2{color:var(--text2)} .t3{color:var(--text3)}
+table{border-collapse:collapse;width:100%}
+.key{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:24px;padding:0 7px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);border-bottom-width:2px;font-size:12px}
+.badge{font-size:11px;padding:2px 7px;border-radius:9px;background:var(--accentDim);color:var(--accent);font-weight:500}
+.bar{height:6px;border-radius:3px;background:var(--chrome);overflow:hidden;flex:none}
+.bar div{height:100%;border-radius:3px;background:var(--accent)}
+.info{position:absolute;left:20px;right:20px;top:56px;height:42px;border-radius:6px;background:#3a2c1f;border:1px solid #6a4724;display:flex;align-items:center;gap:10px;padding:0 12px;opacity:0;z-index:5}
+.info a{margin-left:auto;color:var(--accent);font-weight:500}
+.osd{position:absolute;left:50%;bottom:40px;width:276px;transform:translateX(-50%);background:#2b2d31;border:1px solid #47494f;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5);opacity:0;z-index:20}
+.osd .n{font-size:14px;font-weight:600}
+.osd .m{font-size:12px;color:var(--text2);margin-top:1px}
+.osd .bars{display:flex;gap:3px;margin-top:8px}
+.osd .bars div{width:44px;height:4px;border-radius:2px;background:#4a4d55}
+#cursor{position:absolute;left:0;top:0;width:22px;height:22px;pointer-events:none;display:none;z-index:50;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.appic{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex:none}
+</style>
+</head>
+<body>
+<svg id="backdrop" width="1440" height="900"></svg>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-overview" viewBox="0 0 20 20"><path d="M3.5 14.5a6.5 6.5 0 1 1 13 0"/><path d="M10 14.5l3.2-4.2"/><circle cx="10" cy="14.5" r="1"/></symbol>
+  <symbol id="i-fan" viewBox="0 0 20 20"><circle cx="10" cy="10" r="1.6"/><path d="M10 8.4c-.4-2.7.7-5 2.6-5 1.9 0 2.2 2.7-1 4.6"/><path d="M11.5 10.6c2.4 1.2 3.8 3.3 2.8 4.9-.9 1.6-3.4.6-3.6-3"/><path d="M8.5 10.8c-2.2 1.5-4.7 1.7-5.6 0-.9-1.6 1.2-3.2 4.3-1.7"/><circle cx="10" cy="10" r="7.5"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 20 20"><path d="M11 2.5 4.5 11H10l-1 6.5L15.5 9H10z"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 20 20"><rect x="2.5" y="6" width="13" height="8" rx="1.8"/><path d="M17.5 8.5v3M5.2 8.6v2.8M7.7 8.6v2.8M10.2 8.6v2.8"/></symbol>
+  <symbol id="i-apps" viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><path d="M14 11.2v5.6M11.2 14h5.6"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 20 20"><rect x="2.5" y="5" width="15" height="10" rx="2"/><path d="M5.5 8h1M9.5 8h1M13.5 8h1M5.5 11h1M13.5 11h1M8.2 11.8h3.6"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2.6"/><path d="M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2M4.7 4.7l1.5 1.5M13.8 13.8l1.5 1.5M4.7 15.3l1.5-1.5M13.8 6.2l1.5-1.5"/></symbol>
+  <symbol id="i-info" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v4.5M10 6.5v.1"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 20 20"><rect x="4" y="4.5" width="12" height="8" rx="1.2"/><path d="M2.5 15.5h15"/></symbol>
+  <symbol id="i-down" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 20 20"><circle cx="9" cy="9" r="5"/><path d="M13 13l3.5 3.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4.5v11M4.5 10h11"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 20 20"><path d="M4.5 9.5a5.5 5.5 0 1 0 1.8-4.1"/><path d="M4.5 3.8v3.4h3.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20"><path d="M15.5 12.5A6.5 6.5 0 0 1 7.5 4.5a6.5 6.5 0 1 0 8 8z"/></symbol>
+</svg>
+
+<div class="win">
+  <div class="title">
+    <div class="t"><svg class="i s" style="color:var(--accent)"><use href="#i-fan"/></svg>Fanatic</div>
+    <div class="g">
+      <div><svg width="10" height="10"><path d="M0 5.5h10" stroke="#a4a7ae"/></svg></div>
+      <div><svg width="10" height="10"><rect x=".5" y=".5" width="9" height="9" rx="1.5" fill="none" stroke="#a4a7ae"/></svg></div>
+      <div><svg width="10" height="10"><path d="M.5 .5l9 9M9.5 .5l-9 9" stroke="#a4a7ae"/></svg></div>
+    </div>
+  </div>
+  <div class="side">
+    <div class="devrow"><div class="ic"><svg class="i"><use href="#i-laptop"/></svg></div><div><div class="n">Legion Pro 5 16IRX9</div><div class="b">Lenovo &middot; Legion WMI</div></div></div>
+    <div class="nav" id="nav">
+      <a data-s="overview"><svg class="i"><use href="#i-overview"/></svg>Overview</a>
+      <a data-s="fans"><svg class="i"><use href="#i-fan"/></svg>Fans</a>
+      <a data-s="battery"><svg class="i"><use href="#i-battery"/></svg>Battery</a>
+      <a data-s="profiles"><svg class="i"><use href="#i-apps"/></svg>Profiles</a>
+      <a data-s="hotkeys"><svg class="i"><use href="#i-keyboard"/></svg>Hotkeys</a>
+    </div>
+    <div class="nav" style="margin-top:auto">
+      <div class="sep"></div>
+      <a><svg class="i"><use href="#i-gear"/></svg>Settings</a>
+      <a><svg class="i"><use href="#i-info"/></svg>About</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- OVERVIEW -->
+    <section class="page" id="p-overview">
+      <div class="ph"><h1>Overview</h1><div class="seg modeSeg"></div></div>
+      <div class="info" id="info"><svg class="i s" style="color:var(--accent)"><use href="#i-info"/></svg><span id="infoText">Cyberpunk 2077 started. Switched to Performance.</span><a id="infoLink">Undo</a></div>
+      <div class="body">
+        <div class="panel" style="position:absolute;left:0;top:0;width:600px;height:394px">
+          <div class="hd">Chassis temperature<div class="x"><span class="mono">25&deg;</span><span style="display:block;width:120px;height:6px;border-radius:3px;background:linear-gradient(90deg,#050314,#2a0b5e,#6a0f8e,#b5207f,#e8483f,#f98a16,#fcc93a,#fff6d0)"></span><span class="mono">100&deg;C</span></div></div>
+          <canvas id="thermal" style="position:absolute;left:0;top:36px;width:598px;height:356px"></canvas>
+        </div>
+        <div class="panel" style="position:absolute;left:0;top:406px;width:600px;height:126px">
+          <div class="hd">Fans<div class="x">Curve: <span class="t2" id="curveName">Balanced</span></div></div>
+          <div class="row"><svg class="i t2"><use href="#i-fan"/></svg><div style="width:70px">CPU fan</div><div class="bar" style="width:250px"><div id="barC"></div></div><div class="mono t3" style="width:44px;text-align:right" id="dutyC">0%</div><div style="margin-left:auto;font-family:var(--display);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums"><span id="rpmC">0</span> <span class="t3" style="font-size:12px;font-family:var(--textf)">rpm</span></div></div>
+          <div class="row"><svg class="i t2"><use href="#i-fan"/></svg><div style="width:70px">GPU fan</div><div class="bar" style="width:250px"><div id="barG"></div></div><div class="mono t3" style="width:44px;text-align:right" id="dutyG">0%</div><div style="margin-left:auto;font-family:var(--display);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums"><span id="rpmG">0</span> <span class="t3" style="font-size:12px;font-family:var(--textf)">rpm</span></div></div>
+        </div>
+        <div class="panel" style="position:absolute;left:0;top:544px;width:600px;height:126px">
+          <div class="hd">Power limits<div class="x">Windows plan: <span class="t2" id="plan">Balanced</span></div></div>
+          <div class="row"><svg class="i t2"><use href="#i-bolt"/></svg><div style="width:150px">CPU package</div><div class="mono t2" style="width:110px"><span id="wC">0</span> W now</div><div class="t3">PL1 <span class="mono t2" id="pl1">65</span> W &nbsp; PL2 <span class="mono t2" id="pl2">115</span> W</div></div>
+          <div class="row"><svg class="i t2"><use href="#i-bolt"/></svg><div style="width:150px">GPU (Dynamic Boost)</div><div class="mono t2" style="width:110px"><span id="wG">0</span> W now</div><div class="t3">TGP <span class="mono t2" id="tgp">80</span> W</div></div>
+        </div>
+        <div class="panel" style="position:absolute;left:612px;top:0;width:408px;height:394px">
+          <div class="hd">Sensors<div class="x">every 1 s</div></div>
+          <table class="mono" id="sensors" style="font-size:12px"></table>
+        </div>
+        <div class="panel" style="position:absolute;left:612px;top:406px;width:408px;height:264px">
+          <div class="hd">Active profile</div>
+          <div class="row" style="min-height:52px"><div class="appic" id="profIc" style="background:#b8a321;color:#1b1b1b">C</div><div class="lbl"><div id="profName">No app rule active</div><div class="d mono" id="profExe">default mode</div></div><span class="badge" id="profMode">Balanced</span></div>
+          <div class="row"><div class="lbl t2">Silent hours</div><div class="t3">23:00 &ndash; 07:30</div></div>
+          <div class="row"><div class="lbl t2">Battery</div><div class="t3" id="ovBat">Plugged in &middot; 80% &middot; limit 80%</div></div>
+          <div class="row"><div class="lbl t2">Last switch</div><div class="t3" id="lastSw">21:04 · Balanced to Performance</div></div>
+          <div class="row"><div class="lbl t2">Backend</div><div class="t3 mono" style="font-size:11.5px">LENOVO_GAMEZONE_DATA</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FANS -->
+    <section class="page" id="p-fans">
+      <div class="ph"><h1>Fans</h1><div class="dd">Performance<svg class="i s"><use href="#i-down"/></svg></div><div class="seg"><div class="on">CPU fan</div><div>GPU fan</div></div><div class="btn"><svg class="i s"><use href="#i-reset"/></svg>Reset</div><div class="btn p" id="applyBtn">Apply</div></div>
+      <div class="body">
+        <div class="panel" style="position:absolute;left:0;top:0;width:1020px;height:444px">
+          <div class="hd">CPU fan curve<div class="x"><svg width="22" height="6"><path d="M0 3h22" stroke="#e3e5e8" stroke-width="2"/></svg>CPU <svg width="22" height="6" style="margin-left:8px"><path d="M0 3h22" stroke="#a4a7ae" stroke-width="1.5" stroke-dasharray="4 3"/></svg>GPU</div></div>
+          <svg id="curveSvg" width="1018" height="406" style="position:absolute;left:0;top:36px"></svg>
+        </div>
+        <div class="panel" style="position:absolute;left:0;top:456px;width:600px;height:214px">
+          <div class="hd">Points<div class="x">temperatures must increase, speed may not decrease</div></div>
+          <div id="ptTable" style="padding:12px 14px"></div>
+        </div>
+        <div class="panel" style="position:absolute;left:612px;top:456px;width:408px;height:214px">
+          <div class="hd">Options</div>
+          <div class="row"><div class="lbl">Hysteresis</div><span class="in">3 &deg;C</span></div>
+          <div class="row"><div class="lbl">Ramp time</div><span class="in">1.5 s</span></div>
+          <div class="row"><div class="lbl">Stop fans below 40 &deg;C</div><div class="tg on"></div></div>
+          <div class="row"><div class="lbl">Use the same curve for both fans</div><div class="tg"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BATTERY -->
+    <section class="page" id="p-battery">
+      <div class="ph"><h1>Battery</h1></div>
+      <div class="body">
+        <div class="gh">Charging</div>
+        <div class="panel">
+          <div class="row" style="min-height:58px"><svg class="i t2"><use href="#i-battery"/></svg><div class="lbl">Charge limit<div class="d">Stop charging at this level to slow down battery wear</div></div><div class="seg" id="limSeg"><div>60%</div><div class="on">80%</div><div>100%</div></div></div>
+          <div class="row" style="min-height:58px"><svg class="i t2"><use href="#i-bolt"/></svg><div class="lbl">Plugged in, not charging<div class="d">Limit reached. Fanatic holds the battery at 80%.</div></div><div class="bar" style="width:180px"><div style="width:80%"></div></div><div class="mono" style="width:40px;text-align:right">80%</div></div>
+          <div class="row" style="min-height:58px"><svg class="i t2"><use href="#i-check"/></svg><div class="lbl">Charge to 100% once<div class="d">For a trip. The limit returns after the next unplug.</div></div><div class="btn">Charge to full</div></div>
+        </div>
+        <div class="gh" style="margin-top:16px">Health</div>
+        <div class="panel" style="height:214px">
+          <div style="position:absolute;left:16px;top:16px;width:270px">
+            <div class="t3" style="font-size:12px">Capacity</div>
+            <div style="font-family:var(--display);font-size:28px;font-weight:600;margin-top:2px">91.6%</div>
+            <div class="t2" style="margin-top:2px">73.3 of 80.0 Wh design</div>
+            <div class="t3" style="font-size:12px;margin-top:16px">Estimated 80% capacity</div>
+            <div style="margin-top:2px">January 2028 (in about 14 months)</div>
+            <div class="t3" style="font-size:12px;margin-top:16px">Wear rate</div>
+            <div class="mono t2" style="margin-top:2px">0.83% per month</div>
+          </div>
+          <svg id="capChart" width="700" height="190" style="position:absolute;left:300px;top:12px"></svg>
+        </div>
+        <div class="gh" style="margin-top:16px">Details</div>
+        <div class="panel" id="batStats" style="display:grid;grid-template-columns:repeat(4,1fr)"></div>
+      </div>
+    </section>
+
+    <!-- PROFILES -->
+    <section class="page" id="p-profiles">
+      <div class="ph"><h1>Profiles</h1><span class="t3" style="font-size:12.5px">When no app matches</span><div class="dd">Balanced<svg class="i s"><use href="#i-down"/></svg></div><div class="in" style="width:200px;font-family:var(--textf);color:var(--text3);gap:8px"><svg class="i s"><use href="#i-search"/></svg>Search apps</div><div class="btn p"><svg class="i s"><use href="#i-plus"/></svg>Add app</div></div>
+      <div class="body">
+        <div class="gh">Apps</div>
+        <div class="panel" id="rules"></div>
+        <div class="gh" style="margin-top:16px">Silent hours</div>
+        <div class="panel">
+          <div class="row" style="min-height:52px"><svg class="i t2"><use href="#i-moon"/></svg><div class="lbl">Silent hours<div class="d">Silent mode and a fan speed cap at night. A running game still wins.</div></div><div class="tg on"></div></div>
+          <div class="row" style="min-height:52px"><div style="width:20px"></div><div class="lbl">Time</div><span class="t3">From</span><span class="in">23:00</span><span class="t3">to</span><span class="in">07:30</span></div>
+          <div class="row" style="min-height:52px"><div style="width:20px"></div><div class="lbl">Days</div><div id="days" style="display:flex;gap:4px"></div></div>
+          <div class="row" style="min-height:52px"><div style="width:20px"></div><div class="lbl">Fan speed limit</div><span class="in">2 200 rpm</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOTKEYS -->
+    <section class="page" id="p-hotkeys">
+      <div class="ph"><h1>Hotkeys</h1></div>
+      <div class="body">
+        <div style="position:absolute;left:0;top:0;width:560px">
+          <div class="gh">Shortcuts</div>
+          <div class="panel" id="binds"></div>
+          <div class="gh" style="margin-top:16px">Mode overlay</div>
+          <div class="panel">
+            <div class="row"><div class="lbl">Show overlay when the mode changes</div><div class="tg on"></div></div>
+            <div class="row"><div class="lbl">Position</div><div class="dd">Top center<svg class="i s"><use href="#i-down"/></svg></div></div>
+            <div class="row"><div class="lbl">Hide after</div><span class="in">1.6 s</span></div>
+          </div>
+        </div>
+        <div style="position:absolute;left:576px;top:0;width:444px">
+          <div class="gh">Preview</div>
+          <div class="panel" style="height:330px"><div id="preview" style="position:absolute;inset:0"></div></div>
+          <div class="t3" style="margin-top:10px;font-size:12px;line-height:1.5">Fanatic picks up the laptop's own performance key (Fn + Q on Legion, Fn + F5 on ROG, the Omen key on HP) and shows this overlay instead of the vendor pop-up. Works over fullscreen games.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="osd" id="osd"><svg class="i" style="color:var(--accent)"><use href="#i-bolt"/></svg><div><div class="n" id="osdName">Performance</div><div class="m" id="osdMeta">CPU 115 W &middot; GPU 140 W</div><div class="bars" id="osdBars"><div></div><div></div><div></div><div></div></div></div></div>
+  </div>
+
+  <div class="status" id="status"></div>
+  <svg id="cursor" viewBox="0 0 22 22"><path d="M3 2 L3 18 L7.2 14.2 L10 20.5 L12.8 19.3 L10.1 13.2 L15.8 13.2 Z" fill="#fff" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/></svg>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const CAP=!!window.__CAPTURE; if(CAP) document.body.classList.add('capture');
+const TAU=Math.PI*2;
+const STOPS=['#050314','#2a0b5e','#6a0f8e','#b5207f','#e8483f','#f98a16','#fcc93a','#fff6d0'].map(h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16)));
+function ironbowRGB(t){t=Math.max(0,Math.min(1,t));const x=t*7,i=Math.min(6,Math.floor(x)),f=x-i,a=STOPS[i],b=STOPS[i+1];return [0,1,2].map(k=>a[k]+(b[k]-a[k])*f);}
+const ironbow=t=>{const c=ironbowRGB(t);return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;};
+const tcol=c=>ironbow((c-25)/75);
+const LUT=new Uint8ClampedArray(768);for(let i=0;i<256;i++){const c=ironbowRGB(i/255);LUT[i*3]=c[0];LUT[i*3+1]=c[1];LUT[i*3+2]=c[2];}
+const ss=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t);};
+const fmt=n=>Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+const MODES=['Silent','Balanced','Performance','Turbo'];
+const TEMPS=[40,50,60,67,74,81,88,95];
+const DUTY={Silent:[0,0,18,26,34,45,62,80],Balanced:[0,15,25,35,46,60,78,95],Performance:[15,25,35,48,60,74,90,100],Turbo:[25,35,48,62,76,88,100,100]};
+const LIMITS={Silent:[45,30,60],Balanced:[65,80,80],Performance:[115,140,140],Turbo:[140,175,175]}; // PL1, PL2, TGP
+const presetPts=m=>TEMPS.map((t,i)=>[t,DUTY[m][i]]);
+const userPts=presetPts('Performance');
+function dutyAt(p,T){if(T<=p[0][0])return p[0][1];for(let i=1;i<p.length;i++)if(T<=p[i][0]){const[a,b]=p[i-1],[c,d]=p[i];return b+(d-b)*(T-a)/(c-a);}return p[p.length-1][1];}
+const MAXRPM=5800;
+
+// backdrop: plain desktop with faint isotherms
+(function(){let h='';const ring=(cx,cy,R,ph)=>{let d='';for(let k=0;k<=120;k++){const a=k/120*TAU,r=R+R*.07*Math.sin(3*a+ph)+R*.04*Math.sin(5*a-ph*1.7);d+=(k?'L':'M')+(cx+Math.cos(a)*r).toFixed(1)+' '+(cy+Math.sin(a)*r*.8).toFixed(1);}return `<path d="${d}Z" fill="none" stroke="rgba(255,255,255,.035)"/>`;};
+  for(let i=1;i<=14;i++)h+=ring(140,860,i*64,i*.6); for(let i=1;i<=10;i++)h+=ring(1360,80,i*60,i*.9+2); $('backdrop').innerHTML=h;})();
+
+function seg(active){document.querySelectorAll('.modeSeg').forEach(el=>el.innerHTML=MODES.map(m=>`<div class="${m===active?'on':''}">${m}</div>`).join(''));}
+function status(s){$('status').innerHTML=`<span>CPU <b>${s.cpu.toFixed(0)} &deg;C</b></span><span>GPU <b>${s.gpu.toFixed(0)} &deg;C</b></span><span>Fans <b>${fmt(Math.round(s.rC/10)*10)} / ${fmt(Math.round(s.rG/10)*10)} rpm</b></span><span>Mode <b>${s.mode}</b></span><span class="r">AC &middot; 80% &middot; limit 80%</span><span>Lenovo Legion backend</span>`;}
+function setOsd(o,mode,meta){const el=$('osd');el.style.opacity=o;el.style.transform=`translateX(-50%) translateY(${(1-o)*8}px)`;$('osdName').textContent=mode;$('osdMeta').textContent=meta;const mi=MODES.indexOf(mode);[...$('osdBars').children].forEach((b,i)=>b.style.background=i<=mi?'var(--accent)':'#4a4d55');}
+
+// ---- simulation: a 6 s loop in which a game starts at 1.1 s and exits at 4.3 s ----
+const wrap=(t,p)=>((t%p)+p)%p;
+const heatEnv=t=>{t=wrap(t,6);return ss(1.1,2.4,t)*(1-ss(4.3,5.7,t));};
+function simAt(t,scene){
+  let h,mode,game;
+  if(scene==='overview'){const tt=wrap(t,6);h=heatEnv(t);game=tt>=1.15&&tt<4.45;mode=game?'Performance':'Balanced';}else{h=.62;mode='Performance';game=true;}
+  const w=(p,k)=>Math.sin(TAU*t/p+k);
+  const cpu=54+34*h+1.2*w(3,0)+.5*w(1.5,1),gpu=49+30*h+.8*w(2,2)+.4*w(1,.3);
+  const pts=presetPts(mode),dC=dutyAt(pts,cpu),dG=dutyAt(pts,gpu);
+  return {h,mode,game,cpu,gpu,hot:cpu+4.5*h+1,vrm:47+22*h+.6*w(2,1),ssd:41+6*h+.3*w(3,2),mem:44+9*h+.3*w(6,1),cell:31.2+1.1*h,gpuHs:gpu+9+3*h,
+    dC,dG,rC:dC/100*MAXRPM+20*w(1.5,0),rG:dG/100*MAXRPM+20*w(2,1),wC:28+92*h+2*w(1,0),wG:22+108*h+2*w(1.5,1)};
+}
+
+// ---- thermal map (signature widget) ----
+const TW=598,TH=356,GW=150,GH=90,BX=54,BY=44,BW=490,BH=280;
+const off=document.createElement('canvas');off.width=GW;off.height=GH;const offCtx=off.getContext('2d');const img=offCtx.createImageData(GW,GH);
+let Htot=0;for(let k=0;k<240;k++)Htot+=heatEnv((k+.5)/240*6)*6/240;
+function spin(t,scene){if(scene!=='overview')return t*2.2;const tt=wrap(t,6);let H=0;for(let k=0;k<40;k++)H+=heatEnv((k+.5)/40*tt)*tt/40;return (TAU/9)*(12*tt/6+16*H/Htot);}
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function drawThermal(t,s,scene){
+  const cv=$('thermal'),dpr=window.devicePixelRatio||1;if(cv.width!==Math.round(TW*dpr)){cv.width=Math.round(TW*dpr);cv.height=Math.round(TH*dpr);}
+  const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  const base=30+6*s.h,amb=23.5;
+  const src=[[.40,.31,.075,s.cpu],[.62,.32,.09,s.gpu],[.51,.16,.045,s.vrm],[.30,.68,.06,s.ssd],[.70,.62,.07,s.mem-6],[.5,.9,.18,s.cell+2]];
+  for(const[u0,v0,u1,v1,T] of [[.40,.31,.13,.16,s.cpu],[.62,.32,.87,.16,s.gpu],[.40,.31,.82,.18,s.cpu]])for(let k=1;k<=7;k++){const f=k/8;src.push([u0+(u1-u0)*f,v0+(v1-v0)*f,.028,base+(T-base)*(.82-.42*f)]);}
+  const plume=.4+.6*(s.rC+s.rG)/(2*MAXRPM);let p=0;
+  for(let j=0;j<GH;j++)for(let i=0;i<GW;i++){const x=i/GW*TW,y=j/GH*TH,u=(x-BX)/BW,v=(y-BY)/BH;let T;
+    if(u>=0&&u<=1&&v>=0&&v<=1){T=base+Math.sin(u*7+v*5);for(const[su,sv,sg,st] of src){const du=(u-su)*1.66,dv=v-sv,c=base+(st-base)*Math.exp(-(du*du+dv*dv)/(2*sg*sg));if(c>T)T=c;}}
+    else{T=amb+(u>-.03&&u<1.03&&v>-.05&&v<1.06?3:0);for(const[fu,dir] of [[.13,-1],[.87,1]]){const du=(u-fu-dir*.02)*2.2,dv=v+.02;if(dv<.02){const g=Math.exp(-du*du/(2*.06*.06)-dv*dv/(2*.11*.11));T=Math.max(T,amb+(s.cpu-amb)*.55*plume*g);}}}
+    const q=Math.max(0,Math.min(255,Math.round((T-25)/75*255)))*3;img.data[p++]=LUT[q];img.data[p++]=LUT[q+1];img.data[p++]=LUT[q+2];img.data[p++]=255;}
+  offCtx.putImageData(img,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(off,0,0,TW,TH);
+  ctx.strokeStyle='rgba(255,255,255,.32)';ctx.lineWidth=1.2;rr(ctx,BX,BY,BW,BH,14);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,.11)';ctx.lineWidth=1;const kx=BX+BW*.09,ky=BY+BH*.42,kw=BW*.82/15,kh=BH*.34/6;
+  for(let r=0;r<6;r++)for(let c=0;c<15;c++){rr(ctx,kx+c*kw+2,ky+r*kh+2,kw-4,kh-4,2);ctx.stroke();}
+  rr(ctx,BX+BW*.35,BY+BH*.82,BW*.3,BH*.14,5);ctx.stroke();
+  const ang=spin(t,scene);
+  for(const[fu,dirn] of [[.13,1],[.87,-1]]){const cx=BX+BW*fu,cy=BY+BH*.16+6,R=BH*.13;ctx.strokeStyle='rgba(255,255,255,.38)';ctx.lineWidth=1.1;ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,.26)';for(let b=0;b<9;b++){const a=dirn*ang+b*TAU/9;ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*R*.24,cy+Math.sin(a)*R*.24);ctx.quadraticCurveTo(cx+Math.cos(a+.55)*R*.62,cy+Math.sin(a+.55)*R*.62,cx+Math.cos(a+.25)*R*.94,cy+Math.sin(a+.25)*R*.94);ctx.stroke();}
+    ctx.fillStyle='rgba(20,20,24,.9)';ctx.beginPath();ctx.arc(cx,cy,R*.22,0,TAU);ctx.fill();}
+  ctx.font='11px "SF Mono", ui-monospace, Consolas, monospace';ctx.textBaseline='middle';
+  const spot=(u,v,label,T,side,dyl)=>{const x=BX+BW*u,y=BY+BH*v;ctx.strokeStyle='#fff';ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(x-8,y);ctx.lineTo(x-3,y);ctx.moveTo(x+3,y);ctx.lineTo(x+8,y);ctx.moveTo(x,y-8);ctx.lineTo(x,y-3);ctx.moveTo(x,y+3);ctx.lineTo(x,y+8);ctx.stroke();
+    const txt=`${label} ${T.toFixed(1)}°`,w=ctx.measureText(txt).width,bx=side>0?x+10:x-20-w,by=y+dyl;ctx.fillStyle='rgba(0,0,0,.62)';rr(ctx,bx,by,w+10,18,3);ctx.fill();ctx.fillStyle='#fff';ctx.fillText(txt,bx+5,by+9);};
+  spot(.40,.31,'CPU',s.cpu,-1,10);spot(.62,.32,'GPU',s.gpu,1,10);
+}
+
+const ROWS=[['CPU package','cpu','°C'],['CPU hottest core','hot','°C'],['GPU core','gpu','°C'],['GPU hot spot','gpuHs','°C'],['VRM','vrm','°C'],['NVMe SSD','ssd','°C'],['Memory','mem','°C'],['Battery','cell','°C']];
+function renderOverview(t){
+  const s=simAt(t,'overview');seg(s.mode);drawThermal(t,s,'overview');status(s);
+  $('rpmC').textContent=fmt(Math.round(s.rC/10)*10);$('rpmG').textContent=fmt(Math.round(s.rG/10)*10);
+  $('barC').style.width=s.dC.toFixed(1)+'%';$('barG').style.width=s.dG.toFixed(1)+'%';$('dutyC').textContent=Math.round(s.dC)+'%';$('dutyG').textContent=Math.round(s.dG)+'%';
+  $('wC').textContent=Math.round(s.wC);$('wG').textContent=Math.round(s.wG);$('curveName').textContent=s.mode;
+  const L=LIMITS[s.mode];$('pl1').textContent=L[0];$('pl2').textContent=L[1];$('tgp').textContent=L[2];
+  $('plan').textContent=s.mode==='Performance'?'High performance':'Balanced';
+  let h='<tr style="height:28px;color:#7d8088;font-size:11px;font-family:var(--textf)"><td style="padding-left:14px">Sensor</td><td align="right">Now</td><td align="right">Max</td><td style="padding:0 14px 0 16px">Last 30 s</td></tr>';
+  for(const[n,k,u] of ROWS){const hist=[];for(let i=39;i>=0;i--)hist.push(simAt(t-i*.15,'overview')[k]);const now=hist[39],hi=Math.max(...hist),lo=Math.min(...hist);
+    const pts=hist.map((v,i)=>`${(i/39*96).toFixed(1)},${(16-(v-lo)/(Math.max(hi-lo,4))*14).toFixed(1)}`).join(' ');
+    h+=`<tr style="height:41px;border-top:1px solid #34363b"><td style="padding-left:14px;font-family:var(--textf);font-size:13px">${n}</td><td align="right" style="color:#e3e5e8">${now.toFixed(1)} ${u}</td><td align="right" style="color:#7d8088">${hi.toFixed(0)}</td>
+      <td style="padding:0 14px 0 16px"><svg width="96" height="18" style="display:block"><polyline points="${pts}" fill="none" stroke="${tcol(Math.max(now,55))}" stroke-width="1.3"/></svg></td></tr>`;}
+  $('sensors').innerHTML=h;
+  if(s.game){$('profIc').style.display='flex';$('profName').textContent='Cyberpunk 2077';$('profExe').textContent='cyberpunk2077.exe';$('profMode').textContent='Performance';}
+  else{$('profIc').style.display='none';$('profName').textContent='No app rule active';$('profExe').textContent='default mode';$('profMode').textContent='Balanced';}
+  const tt=wrap(t,6);let a=0;
+  if(tt>=1.15&&tt<3.2){a=Math.min(1,(tt-1.15)/.2,(3.2-tt)/.25);$('infoText').textContent='Cyberpunk 2077 started. Switched to Performance.';$('infoLink').textContent='Undo';}
+  else if(tt>=4.45&&tt<5.85){a=Math.min(1,(tt-4.45)/.2,(5.85-tt)/.25);$('infoText').textContent='Cyberpunk 2077 closed. Back to Balanced.';$('infoLink').textContent='Undo';}
+  $('info').style.opacity=a;$('info').style.transform=`translateY(${(1-a)*-6}px)`;
+  let o=0,meta='';
+  if(tt>=1.15&&tt<2.6){o=Math.min(1,(tt-1.15)/.15,(2.6-tt)/.25);meta='CPU 115 W · GPU 140 W';}
+  else if(tt>=4.45&&tt<5.7){o=Math.min(1,(tt-4.45)/.15,(5.7-tt)/.25);meta='CPU 65 W · GPU 80 W';}
+  setOsd(o,s.mode,meta);
+}
+
+// ---- fan curve editor (signature widget) ----
+const CV={W:1018,H:406,x0:56,x1:996,y0:22,y1:372};
+const tx=T=>CV.x0+(T-30)/70*(CV.x1-CV.x0),dy=d=>CV.y1-d/100*(CV.y1-CV.y0);
+let dragIdx=-1,demo=false;
+function renderFans(t){
+  const s=simAt(t,'fans');seg('Performance');status(s);setOsd(0,'Performance','');
+  let pts=userPts.map(p=>p.slice()),active=dragIdx,cur=null,dirty=false;
+  if(CAP||demo){pts=presetPts('Performance');active=-1;const tt=wrap(t,5),P=pts[5].slice();
+    const kf=[[0,P[0],P[1]],[1,P[0],P[1]],[2.1,78,87],[3.3,84,63],[4.1,P[0],P[1]],[5,P[0],P[1]]];let T=P[0],D=P[1];
+    for(let k=1;k<kf.length;k++)if(tt<=kf[k][0]){const f=ss(kf[k-1][0],kf[k][0],tt);T=kf[k-1][1]+(kf[k][1]-kf[k-1][1])*f;D=kf[k-1][2]+(kf[k][2]-kf[k-1][2])*f;break;}
+    if(tt>.85&&tt<4.25){active=5;pts[5]=[Math.round(T),Math.round(D)];dirty=pts[5][0]!==P[0]||pts[5][1]!==P[1];}
+    const rest=[860,350],at=[tx(pts[5][0]),dy(pts[5][1])],a=ss(.1,.85,tt),b=ss(4.25,4.95,tt);
+    cur=[rest[0]+(at[0]-rest[0])*a+(rest[0]-at[0])*b,rest[1]+(at[1]-rest[1])*a+(rest[1]-at[1])*b];}
+  const live=78.4+.9*Math.sin(TAU*t/5),gpuPts=presetPts('Performance').map(([a,b])=>[a,Math.min(100,b+6)]);
+  let h=`<defs><linearGradient id="ib" gradientUnits="userSpaceOnUse" x1="${tx(25)}" y1="0" x2="${tx(100)}" y2="0">${STOPS.map((c,i)=>`<stop offset="${i/7}" stop-color="rgb(${c})"/>`).join('')}</linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient><mask id="fm"><rect x="0" y="${CV.y0}" width="${CV.W}" height="${CV.y1-CV.y0}" fill="url(#fade)"/></mask></defs>`;
+  for(let T=30;T<=100;T+=10)h+=`<line x1="${tx(T)}" y1="${CV.y0}" x2="${tx(T)}" y2="${CV.y1}" stroke="#3a3d43"/><text x="${tx(T)}" y="${CV.y1+20}" fill="#7d8088" font-family="SF Pro Text, system-ui" font-size="11.5" text-anchor="middle">${T} °C</text>`;
+  for(let d=0;d<=100;d+=20)h+=`<line x1="${CV.x0}" y1="${dy(d)}" x2="${CV.x1}" y2="${dy(d)}" stroke="#3a3d43"/><text x="${CV.x0-10}" y="${dy(d)+4}" fill="#7d8088" font-family="SF Pro Text, system-ui" font-size="11.5" text-anchor="end">${d}%</text>`;
+  let f=`M${tx(30)} ${dy(0)}`;for(let T=30;T<=100;T+=.5)f+=` L${tx(T).toFixed(1)} ${dy(dutyAt(pts,T)).toFixed(1)}`;f+=` L${tx(100)} ${dy(0)}Z`;
+  h+=`<path d="${f}" fill="url(#ib)" mask="url(#fm)"/>`;
+  const path=p=>{let l='';for(let T=30;T<=100;T+=.5)l+=(l?' L':'M')+tx(T).toFixed(1)+' '+dy(dutyAt(p,T)).toFixed(1);return l;};
+  h+=`<path d="${path(gpuPts)}" fill="none" stroke="#a4a7ae" stroke-width="1.3" stroke-dasharray="4 3"/><path d="${path(pts)}" fill="none" stroke="#e3e5e8" stroke-width="2"/>`;
+  const ld=dutyAt(pts,live);
+  h+=`<line x1="${tx(live)}" y1="${CV.y0}" x2="${tx(live)}" y2="${CV.y1}" stroke="#a4a7ae" stroke-dasharray="2 3"/><circle cx="${tx(live)}" cy="${dy(ld)}" r="4.5" fill="#e3e5e8" stroke="#2e3035" stroke-width="2"/>
+    <text x="${tx(live)-8}" y="${CV.y1-10}" fill="#a4a7ae" font-family="SF Pro Text, system-ui" font-size="11.5" text-anchor="end">now ${live.toFixed(1)} °C → ${ld.toFixed(0)}%</text>`;
+  pts.forEach((p,i)=>{const on=i===active;h+=`<circle data-i="${i}" cx="${tx(p[0])}" cy="${dy(p[1])}" r="${on?7:5.5}" fill="${on?'#f08c35':'#2e3035'}" stroke="${on?'#fff':'#e3e5e8'}" stroke-width="2" style="cursor:grab"/>`;
+    if(on){const lx=tx(p[0]),ly=dy(p[1])-18;h+=`<rect x="${lx-66}" y="${ly-18}" width="132" height="24" rx="4" fill="#1e1f22" stroke="#47494f"/><text x="${lx}" y="${ly-1.5}" fill="#e3e5e8" font-family="SF Pro Text, system-ui" font-size="12" text-anchor="middle">${p[0]} °C · ${p[1]}% · ${fmt(Math.round(p[1]/100*MAXRPM/10)*10)} rpm</text>`;}});
+  $('curveSvg').innerHTML=h;
+  const cell=(v,on)=>`<span class="in" style="width:58px;justify-content:flex-end;${on?'border-color:var(--accent);':''}">${v}</span>`;
+  $('ptTable').innerHTML=`<table style="font-size:12.5px"><tr style="height:38px"><td class="t2" style="width:100px">Temperature</td>${pts.map((p,i)=>`<td>${cell(p[0]+'°',i===active)}</td>`).join('')}</tr>
+    <tr style="height:38px"><td class="t2">Fan speed</td>${pts.map((p,i)=>`<td>${cell(p[1]+'%',i===active)}</td>`).join('')}</tr>
+    <tr style="height:30px"><td class="t3">rpm</td>${pts.map(p=>`<td class="mono t3" style="text-align:right;padding-right:10px;font-size:11.5px">${fmt(Math.round(p[1]/100*MAXRPM/100)*100)}</td>`).join('')}</tr></table>
+    <div class="t3" style="font-size:12px;margin-top:14px">${dirty?'<span style="color:var(--accent)">Unsaved changes.</span> Press Apply to write the curve to the embedded controller.':'Curve matches the embedded controller.'}</div>`;
+  $('applyBtn').style.opacity=dirty?1:.55;
+  const c=$('cursor');if(cur){c.style.display='block';c.style.left=(220+20+cur[0]-3)+'px';c.style.top=(32+56+36+cur[1]-2)+'px';}else c.style.display='none';
+}
+
+// ---- battery ----
+function renderBattery(t){
+  const s=simAt(t,'battery');s.mode='Balanced';seg('Balanced');status(s);setOsd(0,'Balanced','');
+  const W=700,H=190,x0=40,x1=W-10,y0=10,y1=H-26,m2x=m=>x0+m/30*(x1-x0),f2y=f=>y1-(f-.75)/.27*(y1-y0);
+  let c='';for(const f of [.8,.9,1])c+=`<line x1="${x0}" y1="${f2y(f)}" x2="${x1}" y2="${f2y(f)}" stroke="${f===.8?'rgba(240,140,53,.6)':'#3a3d43'}" stroke-dasharray="${f===.8?'4 4':''}"/><text x="${x0-8}" y="${f2y(f)+4}" fill="${f===.8?'#f08c35':'#7d8088'}" font-family="SF Pro Text, system-ui" font-size="11" text-anchor="end">${Math.round(f*100)}%</text>`;
+  for(const[m,l] of [[0,'Sep 2025'],[6,'Mar 2026'],[12,'Sep 2026'],[18,'Mar 2027'],[24,'Sep 2027'],[30,'Mar 2028']])c+=`<text x="${m2x(m)}" y="${H-6}" fill="#7d8088" font-family="SF Pro Text, system-ui" font-size="11" text-anchor="${m?m<30?'middle':'end':'start'}">${l}</text>`;
+  const hist=[];for(let m=0;m<=14;m++)hist.push([m,Math.min(1,1-.006*m+.0025*Math.sin(m*1.7))]);hist[14][1]=.916;
+  c+=`<polyline points="${hist.map(([m,f])=>m2x(m).toFixed(1)+','+f2y(f).toFixed(1)).join(' ')}" fill="none" stroke="#e3e5e8" stroke-width="1.6"/>`;hist.forEach(([m,f])=>c+=`<circle cx="${m2x(m)}" cy="${f2y(f)}" r="2.5" fill="#e3e5e8"/>`);
+  c+=`<line x1="${m2x(14)}" y1="${f2y(.916)}" x2="${m2x(28)}" y2="${f2y(.8)}" stroke="#f08c35" stroke-width="1.6" stroke-dasharray="5 4"/><circle cx="${m2x(28)}" cy="${f2y(.8)}" r="4" fill="#f08c35"/>
+    <text x="${m2x(28)-10}" y="${f2y(.8)+18}" fill="#f08c35" font-family="SF Pro Text, system-ui" font-size="11.5" text-anchor="end">Jan 2028</text><text x="${m2x(14)}" y="${f2y(.916)-10}" fill="#a4a7ae" font-family="SF Pro Text, system-ui" font-size="11.5" text-anchor="middle">Today</text>`;
+  $('capChart').innerHTML=c;
+  const rate=(-0.4+0.3*Math.sin(TAU*t/4)).toFixed(1);
+  const st=[['Cycle count','212'],['Design capacity','80.0 Wh'],['Full charge capacity','73.3 Wh'],['Voltage','16.92 V'],['Temperature','31.4 °C'],['Charge rate',rate+' W'],['Adapter','230 W'],['Chemistry','Li-polymer, 4 cells']];
+  $('batStats').innerHTML=st.map(([k,v],i)=>`<div style="padding:10px 14px;${i>=4?'border-top:1px solid #34363b;':''}${i%4?'border-left:1px solid #34363b;':''}"><div class="t3" style="font-size:12px">${k}</div><div class="mono" style="margin-top:3px">${v}</div></div>`).join('');
+}
+
+// ---- profiles ----
+const RULES=[['Cyberpunk 2077','cyberpunk2077.exe','Performance','#b8a321',1],['Elden Ring','eldenring.exe','Performance','#6f6243',0],['Counter-Strike 2','cs2.exe','Turbo','#4b6b8c',0],["Baldur's Gate 3",'bg3_dx11.exe','Performance','#7a4b3a',0],
+  ['Blender','blender.exe','Performance','#d06c1f',0],['Microsoft Teams','ms-teams.exe','Silent','#5059c9',0],['Visual Studio Code','Code.exe','Balanced','#2a7ac0',0]];
+function renderProfiles(t){
+  const s=simAt(t,'profiles');seg('Performance');status(s);setOsd(0,'Performance','');
+  $('rules').innerHTML=RULES.map(([n,e,m,col,run])=>`<div class="row" style="min-height:44px"><div class="appic" style="background:${col}">${n[0]}</div><div class="lbl">${n} ${run?'<span class="badge" style="margin-left:6px">Running</span>':''}<div class="d mono" style="font-size:11.5px">${e}</div></div>
+    <div class="dd" style="min-width:150px">${m}<svg class="i s"><use href="#i-down"/></svg></div><div class="tg on"></div></div>`).join('');
+  $('days').innerHTML=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d,i)=>`<span style="width:42px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;${i<5?'background:var(--accentDim);color:var(--accent);border:1px solid rgba(240,140,53,.45)':'background:var(--chrome);color:var(--text3);border:1px solid var(--border)'}">${d}</span>`).join('');
+}
+
+// ---- hotkeys ----
+const BINDS=[['Cycle mode',['Fn','Q']],['Cycle mode (global)',['Ctrl','Alt','M']],['Silent mode now',['Ctrl','Alt','S']],['Fans to 100% for 60 s',['Ctrl','Alt','B']],['Toggle charge limit 80 / 100%',['Ctrl','Alt','L']],['Show sensor overlay',['Ctrl','Alt','O']]];
+function renderHotkeys(t){
+  const tt=wrap(t,4),mi=Math.floor(tt),mode=MODES[mi],press=(tt-mi)<.18;
+  const s=simAt(t,'hotkeys');s.mode=mode;seg(mode);status(s);setOsd(0,mode,'');
+  $('binds').innerHTML=BINDS.map(([n,k],i)=>`<div class="row" style="min-height:44px"><div class="lbl">${n}</div>${k.map(x=>`<span class="key" style="${i===0&&press?'background:#4a4d55;border-bottom-width:1px;transform:translateY(1px);border-color:var(--accent)':''}">${x}</span>`).join('<span class="t3" style="margin:0 -6px">+</span>')}<span class="t3" style="width:36px;text-align:right">Edit</span></div>`).join('');
+  const L=LIMITS[mode];
+  let g=`<svg width="442" height="328" style="position:absolute;inset:0"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15161c"/><stop offset="1" stop-color="#2b2530"/></linearGradient></defs><rect width="442" height="328" fill="url(#sky)"/>`;
+  let x=0,k=0;while(x<442){const w=20+((k*37)%28),hh=60+((k*53)%110);g+=`<rect x="${x}" y="${290-hh}" width="${w}" height="${hh+40}" fill="#1b1a22"/>`;
+    for(let wy=290-hh+10;wy<290;wy+=11)for(let wx=x+4;wx<x+w-4;wx+=7)if(((wx*7+wy*13+k)%11)<3)g+=`<rect x="${wx}" y="${wy}" width="3" height="4" fill="rgba(240,200,120,.28)"/>`;x+=w+2;k++;}
+  g+=`<rect y="290" width="442" height="38" fill="#121218"/><text x="16" y="314" fill="rgba(227,229,232,.55)" font-family="SF Mono, monospace" font-size="11">HP 86 / 100</text><text x="426" y="314" fill="rgba(227,229,232,.55)" font-family="SF Mono, monospace" font-size="11" text-anchor="end">30 / 120</text></svg>`;
+  $('preview').innerHTML=g+`<div style="position:absolute;left:50%;top:22px;transform:translateX(-50%);width:262px;background:#2b2d31;border:1px solid #47494f;border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 30px rgba(0,0,0,.5)">
+    <svg class="i" style="color:var(--accent)"><use href="#i-bolt"/></svg><div><div style="font-size:14px;font-weight:600">${mode}</div><div style="font-size:12px;color:var(--text2)">CPU ${L[1]} W · GPU ${L[2]} W</div>
+    <div style="display:flex;gap:3px;margin-top:8px">${MODES.map((m,i)=>`<div style="width:44px;height:4px;border-radius:2px;background:${i<=mi?'var(--accent)':'#4a4d55'}"></div>`).join('')}</div></div></div>`;
+}
+
+let page='overview';
+const R={overview:renderOverview,fans:renderFans,battery:renderBattery,profiles:renderProfiles,hotkeys:renderHotkeys};
+window.setScene=function(n){page=n;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='p-'+n));document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.s===n));$('cursor').style.display='none';};
+window.renderAt=function(t){R[page](t);};
+window.CAPTURE={width:1440,height:900,scale:1.25,
+  shots:[{name:'screenshot-overview',scene:'overview',t:3.5},{name:'screenshot-fan-curves',scene:'fans',t:2.1},{name:'screenshot-battery',scene:'battery',t:1},{name:'screenshot-profiles',scene:'profiles',t:1},{name:'screenshot-hotkeys',scene:'hotkeys',t:2.5}],
+  gifs:[{name:'demo-auto-profile',scene:'overview',seconds:6,fps:20,width:960},{name:'demo-fan-curve',scene:'fans',seconds:5,fps:20,width:960},{name:'demo-hotkey-overlay',scene:'hotkeys',seconds:4,fps:20,width:960}]};
+setScene('overview');
+if(!CAP){
+  document.querySelectorAll('#nav a[data-s]').forEach(a=>a.addEventListener('click',()=>setScene(a.dataset.s)));
+  addEventListener('keydown',e=>{const i='12345'.indexOf(e.key);if(i>=0)setScene(['overview','fans','battery','profiles','hotkeys'][i]);if(e.key==='d')demo=!demo;});
+  const svg=$('curveSvg');
+  svg.addEventListener('pointerdown',e=>{const i=e.target.dataset&&e.target.dataset.i;if(i!==undefined){dragIdx=+i;svg.setPointerCapture(e.pointerId);}});
+  svg.addEventListener('pointermove',e=>{if(dragIdx<0)return;const r=svg.getBoundingClientRect(),T=30+(e.clientX-r.left-CV.x0)/(CV.x1-CV.x0)*70,D=(CV.y1-(e.clientY-r.top))/(CV.y1-CV.y0)*100;
+    const p=userPts,lo=dragIdx?p[dragIdx-1]:[27,0],hi=dragIdx<7?p[dragIdx+1]:[103,100];p[dragIdx]=[Math.round(Math.max(lo[0]+3,Math.min(hi[0]-3,T))),Math.round(Math.max(lo[1],Math.min(hi[1],D)))];});
+  addEventListener('pointerup',()=>dragIdx=-1);
+  const loop=()=>{renderAt(performance.now()/1000);requestAnimationFrame(loop);};requestAnimationFrame(loop);
+} else renderAt(0);
+})();
+</script>
+</body>
+</html>
